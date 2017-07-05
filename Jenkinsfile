@@ -13,7 +13,16 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        bat 'set'
+        parallel(
+          "Deploy": {
+            bat 'set'
+            
+          },
+          "Deploy Stage": {
+            sh './deploy.sh'
+            
+          }
+        )
       }
     }
     stage('Dev') {
