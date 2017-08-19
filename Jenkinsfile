@@ -16,19 +16,31 @@ pipeline {
           "DBUnit": {
             echo 'DBUnit'
             
+          },
+          "Jasmine": {
+            echo 'Jasmine'
+            
           }
         )
       }
     }
-    stage('Deploy') {
+    stage('Browser Tests') {
       steps {
         parallel(
-          "Browser Test": {
+          "Firefox": {
             echo 'Browser Tests'
             
           },
-          "Firefox": {
-            echo 'firefox'
+          "Edge": {
+            echo 'Edge'
+            
+          },
+          "Safari": {
+            echo 'Safari'
+            
+          },
+          "Chrome": {
+            echo 'Chrome'
             
           }
         )
@@ -36,16 +48,27 @@ pipeline {
     }
     stage('Dev') {
       steps {
-        parallel(
-          "Dev": {
-            echo 'Hello Dev'
-            
-          },
-          "Test": {
-            echo 'Test'
-            
-          }
-        )
+        echo 'Hello Dev'
+      }
+    }
+    stage('Integration') {
+      steps {
+        echo 'Integration'
+      }
+    }
+    stage('QA') {
+      steps {
+        echo 'QA'
+      }
+    }
+    stage('Pilot') {
+      steps {
+        echo 'Pilot'
+      }
+    }
+    stage('Prod') {
+      steps {
+        echo 'Prod'
       }
     }
   }
