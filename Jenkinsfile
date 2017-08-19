@@ -23,12 +23,12 @@ pipeline {
     stage('Deploy') {
       steps {
         parallel(
-          "Deploy": {
-            bat 'set'
+          "Browser Test": {
+            echo 'Browser Tests'
             
           },
-          "Deploy Stage": {
-            sh './deploy.sh'
+          "Firefox": {
+            echo 'firefox'
             
           }
         )
