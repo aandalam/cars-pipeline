@@ -8,7 +8,16 @@ pipeline {
     }
     stage('Test') {
       steps {
-        bat 'set'
+        parallel(
+          "Junit": {
+            echo 'Hello Test'
+            
+          },
+          "DBUnit": {
+            echo 'DBUnit'
+            
+          }
+        )
       }
     }
     stage('Deploy') {
