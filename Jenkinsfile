@@ -71,5 +71,10 @@ pipeline {
         echo 'Prod'
       }
     }
+    stage('Final') {
+      steps {
+        archiveArtifacts(artifacts: '**/*jar', excludes: 'null')
+      }
+    }
   }
 }
